@@ -1,7 +1,6 @@
 name: Tea Cache Cross-Platform Tests
 
-
-"on": [push, pull_request, workflow_dispatch]
+on: [push, workflow_dispatch]
 
 jobs:
   test:
@@ -20,11 +19,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install stable Rust
-        run: rustup update stable
-
-      - name: Build project
+      - name: Build Rust project
         run: cargo build --locked
 
-      - name: Run unit tests
+      - name: Run Rust tests
         run: cargo test --locked
